@@ -1,5 +1,6 @@
 {
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["eslint:recommended", "prettier", "plugin:jest/recommended"],
+  "plugins": ["prettier", "jest"],
   "rules": {
     "no-console": 1
   },

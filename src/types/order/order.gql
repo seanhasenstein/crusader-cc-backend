@@ -1,0 +1,49 @@
+type Item {
+  productDetails: ProductDetails!
+  quantity: Int!
+  size: String!
+}
+
+type Order {
+  id: ID!
+  date: String!
+  name: String!
+  email: String!
+  phone: String!
+  student: String!
+  items: [Item]!
+  orderTotal: Int!
+  paymentStatus: Boolean!
+  notes: String!
+}
+
+input NewOrderInput {
+  name: String!
+  email: String!
+  phone: String!
+  student: String!
+  items: [item]!
+  orderTotal: Int!
+  paymentStatus: Boolean
+}
+
+input UpdateOrderInput {
+  name: String
+  email: String
+  phone: String
+  student: String
+  items: [item]
+  orderTotal: Int
+  paymentStatus: Boolean
+  notes: String
+}
+
+extend type Query {
+  order(id: ID!): Order!
+  orders: [Order]!
+}
+
+extend type Mutation {
+  newOrder(input: NewOrderInput!): Order!
+  updateOrder(id: ID!, input: UpdateOrderInput!): Order!
+}

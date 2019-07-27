@@ -6,7 +6,6 @@ type User {
   id: ID!
   firstName: String!
   lastName: String!
-  phone: String!
   email: String!
   password: String!
 }
@@ -14,7 +13,6 @@ type User {
 input NewUserInput {
   firstName: String!
   lastName: String!
-  phone: String!
   email: String!
   password: String!
 }
@@ -25,11 +23,10 @@ input LoginInput {
 }
 
 extend type Query {
-  me: User
+  login(input: LoginInput!): User
+  logout: SuccessMessage
 }
 
 extend type Mutation {
   signup(input: NewUserInput): User!
-  login(input: LoginInput!): User
-  logout: SuccessMessage
 }

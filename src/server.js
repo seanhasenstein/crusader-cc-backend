@@ -41,7 +41,6 @@ const start = async () => {
   };
   app.use(cors(corsOptions));
   app.use(cookieParser());
-
   app.use((req, res, next) => {
     // checks for user in cookies and adds userId to the requests
     const { token } = req.cookies;
@@ -51,7 +50,6 @@ const start = async () => {
     }
     next();
   });
-
   app.use(async (req, res, next) => {
     if (!req.userId) return next();
     const user = await User.findById(req.userId).exec();
@@ -65,8 +63,8 @@ const start = async () => {
     cors: false // disables the apollo-server-express cors to allow the cors middleware use
   });
 
-  app.listen({ port: 5000 }, () => {
-    console.log(`Server running at http://localhost:5000${server.graphqlPath}`);
+  app.listen({ port: 4000 }, () => {
+    console.log(`Server running at http://localhost:4000${server.graphqlPath}`);
   });
 };
 

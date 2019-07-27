@@ -1,0 +1,40 @@
+enum Sport {
+  CROSSCOUNTRY
+  TRACKANDFIELD
+}
+
+type Season {
+  id: ID!
+  sport: Season!
+  year: String!
+  studentAthletes: [String]
+  order: [Order]
+  isActive: Boolean!
+}
+
+input NewSeasonInput {
+  sport: Season!
+  year: String!
+  studentAthletes: [String]
+  order: [Order]
+  isActive: Boolean!
+}
+
+input UpdateSeasonInput {
+  sport: Season
+  year: String
+  studentAthletes: [String]
+  order: [Order]
+  isActive: Boolean
+}
+
+extend type Query {
+  season(id: ID!): Season!
+  seasons: [Season]!
+}
+
+extend type Mutation {
+  newSeason(input: NewSeasonInput!): Season!
+  updateSeason(id: ID!, input: UpdateSeasonInput!): Season!
+  removeSeason(id: ID!): Season!
+}

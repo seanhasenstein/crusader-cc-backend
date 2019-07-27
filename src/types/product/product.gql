@@ -1,3 +1,9 @@
+enum Gender {
+  MENS
+  WOMENS
+  UNISEX
+}
+
 type Product {
   id: ID!
   productId: String!
@@ -5,11 +11,13 @@ type Product {
   brand: String!
   color: String!
   category: String!
-  gender: String!
+  gender: Gender!
   material: String!
   price: Int!
   sizes: [String]!
   imageUrl: String!
+  isFree: Boolean!
+  createdAt: String!
 }
 
 input NewProductInput {
@@ -23,12 +31,30 @@ input NewProductInput {
   price: Int!
   sizes: [String]!
   imageUrl: String!
+  isFree: Boolean!
+}
+
+input UpdateProductInput {
+  productId: String
+  name: String
+  brand: String
+  color: String
+  category: String
+  gender: String
+  material: String
+  price: Int
+  sizes: [String]
+  imageUrl: String
+  isFree: Boolean
 }
 
 type Query {
   products: [Product]!
+  product(id: ID!): Product!
 }
 
 type Mutation {
   newProduct(input: NewProductInput!): Product!
+  updateProduct(id: ID!, input: UpdateProductInput!): Product!
+  removeProduct(id: ID!): Product!
 }
