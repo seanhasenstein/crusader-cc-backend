@@ -11,8 +11,10 @@ const loadTypeSchema = require('./utils/schema');
 const User = require('./types/user/user.model');
 const product = require('./types/product/product.resolvers');
 const user = require('./types/user/user.resolvers');
+const order = require('./types/order/order.resolvers');
+const season = require('./types/season/season.resolvers');
 
-const types = ['product', 'user'];
+const types = ['product', 'user', 'order', 'season'];
 
 const start = async () => {
   connect(config.dbUrl);
@@ -28,7 +30,7 @@ const start = async () => {
 
   const server = new ApolloServer({
     typeDefs: [rootSchema, ...schemaTypes],
-    resolvers: merge({}, product, user),
+    resolvers: merge({}, product, user, season, order),
     context({ req }) {
       return { ...req };
     }

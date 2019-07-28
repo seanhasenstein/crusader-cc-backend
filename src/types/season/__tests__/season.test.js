@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const resolvers = require('../season.resolvers');
 const Season = require('../season.model');
 
-describe.only('Season Resolvers', () => {
+describe('Season Resolvers', () => {
   test('season query gets one by id in args', async () => {
     const season = await Season.create({
       sport: 'Cross Country',

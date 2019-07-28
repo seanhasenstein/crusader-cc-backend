@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const resolvers = require('../user.resolvers');
 const User = require('../user.model');
 
-describe.skip('User Resolvers', () => {
+describe('User Resolvers', () => {
   test('signup mutation creates a new user', async () => {
     const args = {
       input: {

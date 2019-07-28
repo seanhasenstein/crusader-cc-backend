@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const resolvers = require('../order.resolvers');
 const Order = require('../order.model');
 
-describe.skip('Order Resolvers', () => {
+describe('Order Resolvers', () => {
   test('order query gets the correct query from args.id', async () => {
     const order = await Order.create({
       name: 'Original Name',

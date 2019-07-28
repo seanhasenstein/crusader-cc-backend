@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const resolvers = require('../product.resolvers');
 const Product = require('../product.model');
 
-describe.skip('Product Resolvers', () => {
+describe('Product Resolvers', () => {
   test('Product query gets one by id in args', async () => {
     const id = mongoose.Types.ObjectId();
     const product = await Product.create({

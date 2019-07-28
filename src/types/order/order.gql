@@ -1,5 +1,11 @@
 type Item {
-  productDetails: ProductDetails!
+  productDetails: ID!
+  quantity: Int!
+  size: String!
+}
+
+input ItemInput {
+  productDetails: ID!
   quantity: Int!
   size: String!
 }
@@ -22,7 +28,7 @@ input NewOrderInput {
   email: String!
   phone: String!
   student: String!
-  items: [item]!
+  items: [ItemInput]!
   orderTotal: Int!
   paymentStatus: Boolean
 }
@@ -32,7 +38,7 @@ input UpdateOrderInput {
   email: String
   phone: String
   student: String
-  items: [item]
+  items: [ItemInput]
   orderTotal: Int
   paymentStatus: Boolean
   notes: String
@@ -46,4 +52,5 @@ extend type Query {
 extend type Mutation {
   newOrder(input: NewOrderInput!): Order!
   updateOrder(id: ID!, input: UpdateOrderInput!): Order!
+  removeOrder(id: ID!): Order!
 }
