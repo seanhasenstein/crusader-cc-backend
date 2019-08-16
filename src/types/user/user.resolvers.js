@@ -2,6 +2,17 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('./user.model');
 
+const me = async (_, args, ctx) => {
+  // check if there's a current user ID
+  if (!ctx.userId) {
+    return null;
+  }
+  const user = await User.findById(ctx.userId)
+    .lean()
+    .exec();
+  return user;
+};
+
 const signup = async (_, args) => {
   const lowercaseEmail = args.input.email.toLowerCase();
 
@@ -48,11 +59,12 @@ const logout = (_, args, ctx) => {
 
 module.exports = {
   Query: {
-    login,
-    logout
+    logout,
+    me
   },
   Mutation: {
-    signup
+    signup,
+    login
   },
   User: {
     id(user) {

@@ -1,0 +1,25 @@
+type Student {
+  id: ID!
+  name: String!
+  claimedFreeShirt: Boolean!
+}
+
+input NewStudentInput {
+  name: String!
+}
+
+input UpdateStudentInput {
+  name: String
+  claimedFreeShirt: Boolean
+}
+
+extend type Query {
+  student(id: ID!): Student!
+  students: [Student]!
+}
+
+extend type Mutation {
+  newStudent(input: NewStudentInput!): Student!
+  updateStudent(id: ID!, input: UpdateStudentInput!): Student!
+  removeStudent(id: ID!): Student!
+}
