@@ -45,5 +45,10 @@ module.exports = {
     newStudent,
     updateStudent,
     removeStudent
+  },
+  Student: {
+    id(student) {
+      return `${student._id}`;
+    }
   }
 };

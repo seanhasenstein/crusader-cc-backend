@@ -73,7 +73,7 @@ module.exports = {
   },
   Product: {
     id(product) {
-      return String(product._id);
+      return `${product._id}`;
     }
   }
 };
