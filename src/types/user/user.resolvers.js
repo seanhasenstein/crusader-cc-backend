@@ -59,12 +59,12 @@ const logout = (_, args, ctx) => {
 
 module.exports = {
   Query: {
-    logout,
     me
   },
   Mutation: {
     signup,
-    login
+    login,
+    logout
   },
   User: {
     id(user) {
