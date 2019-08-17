@@ -2,28 +2,25 @@ const mongoose = require('mongoose');
 const resolvers = require('../user.resolvers');
 const User = require('../user.model');
 
-// describe('User Resolvers', () => {
-//   test('signup mutation creates a new user', async () => {
-//     const args = {
-//       input: {
-//         firstName: 'Sean',
-//         lastName: 'Hasenstein',
-//         email: 'test@email.com',
-//         password: 'password'
-//       }
-//     };
+describe('User Resolvers', () => {
+  test('signup mutation creates a new user from args', async () => {
+    const args = {
+      input: {
+        firstName: 'Sean',
+        lastName: 'Hasentein',
+        email: 'sean@test.com',
+        password: 'password'
+      }
+    };
 
-//     const result = await resolvers.Mutation.signup(null, args);
-//     Object.keys(args).forEach(field => {
-//       expect(result[field]).toBe(args.input[field]);
-//     });
-//   });
+    const result = await resolvers.Mutation.signup(null, args);
+    const newUser = await User.findById(result.id)
+      .lean()
+      .exec();
 
-//   // can't test login or logout without starting up the Apollo Server
-// });
-
-describe('User Tests', () => {
-  test('1 + 1 = 2', () => {
-    expect(1 + 1).toBe(2);
+    expect(newUser.firstName).toEqual(args.input.firstName);
+    expect(newUser.lastName).toEqual(args.input.lastName);
+    expect(newUser.email).toEqual(args.input.email);
+    expect(newUser.password).not.toEqual(args.input.password);
   });
 });

@@ -21,8 +21,8 @@ const signup = async (_, args) => {
 
   // create user in the db
   const user = User.create({
-    firstName: args.input.email,
-    lastName: args.input.email,
+    firstName: args.input.firstName,
+    lastName: args.input.lastName,
     email: lowercaseEmail,
     password: hashPassword
   });
