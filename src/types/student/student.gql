@@ -1,15 +1,18 @@
 type Student {
   id: ID!
-  name: String!
+  firstName: String!
+  lastName: String!
   claimedFreeShirt: Boolean!
 }
 
 input NewStudentInput {
-  name: String!
+  firstName: String!
+  lastName: String!
 }
 
 input UpdateStudentInput {
-  name: String
+  firstName: String
+  lastName: String
   claimedFreeShirt: Boolean
 }
 

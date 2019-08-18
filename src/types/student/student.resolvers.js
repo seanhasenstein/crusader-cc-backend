@@ -15,8 +15,8 @@ const students = () => {
 };
 
 const newStudent = (_, args) => {
-  const { name } = args.input;
-  const student = Student.create({ name });
+  const { firstName, lastName } = args.input;
+  const student = Student.create({ firstName, lastName });
   return student;
 };
 

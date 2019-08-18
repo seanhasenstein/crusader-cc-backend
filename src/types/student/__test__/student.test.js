@@ -7,12 +7,14 @@ describe('Student Resolvers', () => {
     const id = mongoose.Types.ObjectId();
     const student = await Student.create({
       id,
-      name: 'Sean Hasenstein'
+      firstName: 'Sean',
+      lastName: 'Hasenstein'
     });
 
     const result = await resolvers.Query.student(null, { id: student._id });
     expect(`${result._id}`).toBe(`${student._id}`);
-    expect(result.name).toBe(student.name);
+    expect(result.firstName).toBe(student.firstName);
+    expect(result.lastName).toBe(student.lastName);
     expect(result.claimedFreeShirt).toBe(false);
   });
 
@@ -20,19 +22,23 @@ describe('Student Resolvers', () => {
     const students = await Student.create([
       {
         id: mongoose.Types.ObjectId,
-        name: 'Jonah Jurss'
+        firstName: 'Jonah',
+        lastName: 'Jurss'
       },
       {
         id: mongoose.Types.ObjectId,
-        name: 'Matt Witte'
+        firstName: 'Matt',
+        lastName: 'Witte'
       },
       {
         id: mongoose.Types.ObjectId,
-        name: 'Hans Gruben'
+        firstName: 'Hans',
+        lastName: 'Gruben'
       },
       {
         id: mongoose.Types.ObjectId,
-        name: 'Dominic Wiladsen'
+        firstName: 'Dominic',
+        lastName: 'Wiladsen'
       }
     ]);
 
@@ -43,7 +49,8 @@ describe('Student Resolvers', () => {
   test('NewStudent creates a new student from args', async () => {
     const args = {
       input: {
-        name: 'Sean Hasenstein'
+        firstName: 'Sean',
+        lastName: 'Hasenstein'
       }
     };
 
@@ -59,7 +66,8 @@ describe('Student Resolvers', () => {
 
   test('UpdateStudent updates existing student from args', async () => {
     const student = await Student.create({
-      name: 'Sean Hasenstein'
+      firstName: 'Sean',
+      lastName: 'Hasenstein'
     });
 
     const args = {
@@ -75,7 +83,8 @@ describe('Student Resolvers', () => {
 
   test('RemoveStudent removes existing student from args', async () => {
     const student = await Student.create({
-      name: 'Sean Hasenstein'
+      firstName: 'Sean',
+      lastName: 'Hasenstein'
     });
 
     const args = {
