@@ -13,14 +13,14 @@ const orders = async () => {
 };
 
 const newOrder = async (_, args) => {
-  const { name, email, phone, student, items, paymentStatus } = args.input;
+  const { customer, email, phone, student, items } = args.input;
 
   const orderTotal = items.reduce((acc, curr) => {
     return curr.quantity * curr.price + acc;
   }, 0);
 
   const order = await Order.create({
-    name,
+    customer,
     email,
     phone,
     student,

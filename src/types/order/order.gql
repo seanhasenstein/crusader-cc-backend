@@ -1,11 +1,11 @@
 type Item {
-  productDetails: ID!
+  productId: ID!
   quantity: Int!
   size: String!
 }
 
 input ItemInput {
-  productDetails: ID!
+  productId: ID!
   quantity: Int!
   size: String!
 }
@@ -13,7 +13,7 @@ input ItemInput {
 type Order {
   id: ID!
   date: String!
-  name: String!
+  customer: String!
   email: String!
   phone: String!
   student: String!
@@ -24,22 +24,19 @@ type Order {
 }
 
 input NewOrderInput {
-  name: String!
+  customer: String!
   email: String!
   phone: String!
   student: String!
   items: [ItemInput]!
-  orderTotal: Int!
-  paymentStatus: Boolean
 }
 
 input UpdateOrderInput {
-  name: String
+  customer: String
   email: String
   phone: String
   student: String
   items: [ItemInput]
-  orderTotal: Int
   paymentStatus: Boolean
   notes: String
 }

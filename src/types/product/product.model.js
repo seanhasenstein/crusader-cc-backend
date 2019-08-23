@@ -2,17 +2,16 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema(
   {
-    productId: {
-      type: String,
-      required: true,
-      trim: true
-    },
     name: {
       type: String,
       required: true,
       trim: true
     },
     brand: {
+      type: String,
+      trim: true
+    },
+    category: {
       type: String,
       required: true,
       trim: true
@@ -22,15 +21,9 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
-    category: {
-      type: String,
-      required: true,
-      trim: true
-    },
     gender: {
       type: String,
-      enum: ['WOMENS', 'MENS', 'UNISEX'],
-      required: true,
+      enum: ['WOMENS', 'MENS'],
       trim: true
     },
     material: {
@@ -52,9 +45,11 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
-    isFree: {
-      type: Boolean,
-      required: true
+    discount: {
+      type: Number
+    },
+    notes: {
+      type: [String]
     }
   },
   { timestamps: true }

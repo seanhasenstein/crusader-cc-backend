@@ -10,14 +10,13 @@ const itemSchema = new mongoose.Schema({
     required: true
   },
   size: {
-    type: String,
-    required: true
+    type: String
   }
 });
 
 const orderSchema = new mongoose.Schema(
   {
-    name: {
+    customer: {
       type: String,
       required: true,
       trim: true

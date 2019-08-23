@@ -1,41 +1,38 @@
 enum Gender {
   MENS
   WOMENS
-  UNISEX
+  ADULT
 }
 
 type Product {
   id: ID!
-  productId: String!
   name: String!
-  brand: String!
+  brand: String
   color: String!
   category: String!
-  gender: Gender!
+  gender: Gender
   material: String!
   price: Int!
   sizes: [String]!
   imageUrl: String!
-  isFree: Boolean!
   createdAt: String!
+  notes: [String]
 }
 
 input NewProductInput {
-  productId: String!
   name: String!
-  brand: String!
+  brand: String
   color: String!
   category: String!
-  gender: String!
+  gender: String
   material: String!
   price: Int!
   sizes: [String]!
   imageUrl: String!
-  isFree: Boolean!
+  notes: [String]
 }
 
 input UpdateProductInput {
-  productId: String
   name: String
   brand: String
   color: String
@@ -45,7 +42,7 @@ input UpdateProductInput {
   price: Int
   sizes: [String]
   imageUrl: String
-  isFree: Boolean
+  notes: [String]
 }
 
 type Query {
