@@ -1,4 +1,5 @@
 const Order = require('./order.model');
+const Product = require('../product/product.model');
 
 const order = async (_, { id }) => {
   return Order.findById(id)
@@ -13,21 +14,37 @@ const orders = async () => {
 };
 
 const newOrder = async (_, args) => {
-  const { customer, email, phone, student, items } = args.input;
+  const { firstName, lastName, email, phone, student, items } = args.input;
 
-  const orderTotal = items.reduce((acc, curr) => {
-    return curr.quantity * curr.price + acc;
-  }, 0);
+  const customer = `${firstName} ${lastName}`;
+  const filterItems = items.map(({ productId, quantity, size }) => {
+    return {
+      productId,
+      quantity,
+      size
+    };
+  });
+
+  const orderTotal = await Promise.resolve(
+    items.reduce(async (acc, curr) => {
+      const current = await acc;
+      const product = await Product.findById(curr.productId);
+      const itemTotal = curr.quantity * product.price;
+      return itemTotal + current;
+    }, 0)
+  ).then(value => {
+    return value;
+  });
 
   const order = await Order.create({
     customer,
     email,
     phone,
     student,
-    items,
-    orderTotal,
-    paymentStatus
+    items: filterItems,
+    orderTotal
   });
+  console.log(order);
   return order;
 };
 
@@ -53,5 +70,15 @@ module.exports = {
     newOrder,
     updateOrder,
     removeOrder
+  },
+  Order: {
+    id(order) {
+      return `${order._id}`;
+    }
+  },
+  Item: {
+    productId(item) {
+      return `${item._id}`;
+    }
   }
 };

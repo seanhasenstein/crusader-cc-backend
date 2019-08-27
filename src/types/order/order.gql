@@ -12,7 +12,7 @@ input ItemInput {
 
 type Order {
   id: ID!
-  date: String!
+  createdAt: String!
   customer: String!
   email: String!
   phone: String!
@@ -20,11 +20,12 @@ type Order {
   items: [Item]!
   orderTotal: Int!
   paymentStatus: Boolean!
-  notes: String!
+  notes: String
 }
 
 input NewOrderInput {
-  customer: String!
+  firstName: String!
+  lastName: String!
   email: String!
   phone: String!
   student: String!
