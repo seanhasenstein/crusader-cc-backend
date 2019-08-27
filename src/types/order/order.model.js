@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const Product = require('../product/product.model');
 
 const itemSchema = new mongoose.Schema({
-  product: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product'
+  productId: {
+    type: String
   },
   quantity: {
     type: Number,

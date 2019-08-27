@@ -44,7 +44,7 @@ const newOrder = async (_, args) => {
     items: filterItems,
     orderTotal
   });
-  console.log(order);
+
   return order;
 };
 
@@ -74,11 +74,6 @@ module.exports = {
   Order: {
     id(order) {
       return `${order._id}`;
-    }
-  },
-  Item: {
-    productId(item) {
-      return `${item._id}`;
     }
   }
 };

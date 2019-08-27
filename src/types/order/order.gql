@@ -1,11 +1,11 @@
 type Item {
-  productId: ID!
+  productId: String!
   quantity: Int!
   size: String!
 }
 
 input ItemInput {
-  productId: ID!
+  productId: String!
   quantity: Int!
   size: String!
 }
