@@ -29,6 +29,6 @@
     "graphql": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "lodash.merge": "^4.6.2",
-    "mongoose": "^5.6.1"
+    "mongoose": "^5.7.5"
   }
 }
